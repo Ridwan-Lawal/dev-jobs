@@ -2,7 +2,7 @@ import { IoMoon, IoSunnySharp } from "react-icons/io5";
 
 function Banner() {
   return (
-    <header className="border border-black bg-header-pattern-mobile tablet:bg-header-pattern-tablet laptop:bg-header-pattern-desktop bg-no-repeat bg-cover tablet:h-[170px]   h-[140px] pt-4 px-8">
+    <header className="border border-black bg-header-pattern-mobile tablet:bg-header-pattern-tablet laptop:bg-header-pattern-desktop bg-no-repeat bg-cover tablet:h-[180px]   h-[150px] pt-4 px-8">
       <nav className="flex items-center justify-between  max-w-6xl mx-auto">
         <h1 className="text-white text-[31px] font-bold">Devjobs</h1>
 

@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         violet: "#5964e0",
-        " violet-light": "#939bf4",
+        "violet-light": "#939bf4",
         "violet-ultralight": "#eeeffc",
-        " btn-secondary": "#c5c9f4",
+        "btn-secondary": "#c5c9f4",
         "text-heading": "#19202d",
         " background-page-elements": "#fff",
         "background-body": "#f4f6f8",
