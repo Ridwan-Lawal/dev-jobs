@@ -3,7 +3,7 @@ import { FaCheck, FaLocationDot } from "react-icons/fa6";
 function FilterByLocationDesktop() {
   return (
     <>
-      <div className=" items-center md:w-[25%] py-5 hidden px-4  border-x hidden md:flex bg-white">
+      <div className=" items-center md:w-[25%] py-5 hidden px-4  border-x  md:flex bg-white">
         <FaLocationDot className="text-2xl md:text-2xl text-violet" />
         <input
           type="text"

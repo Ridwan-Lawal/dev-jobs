@@ -1,16 +1,27 @@
 /* eslint-disable react/prop-types */
 
-import { RxDotFilled } from "react-icons/rx";
 import JobDetailsMainContentHeader from "./JobDetailsMainContentHeader";
+import { useContext } from "react";
+import AppContext from "../../AppContext";
+import JobTodoList from "./JobTodoList";
 
 function JobDetailsMainContent() {
+  const { isDark } = useContext(AppContext);
   return (
-    <div className=" shadow-md shadow-blue-50 bg-white pb-14 pt-12 mt-10 rounded-lg px-9">
+    <div
+      className={`${
+        isDark ? "bg-gray-800 shadow-gray-900" : "shadow-blue-50 bg-white"
+      } shadow-md  pb-14 pt-12 mt-10 rounded-lg px-9 transition-all duration-1000`}
+    >
       <JobDetailsMainContentHeader />
 
       <div className="mt-11 space-y-10">
         {/* role details */}
-        <p className="text-grey-medium leading-normal">
+        <p
+          className={`leading-normal ${
+            isDark ? "text-grey-light" : "text-grey-medium"
+          } `}
+        >
           Scoot is looking for a Senior Software Engineer passionate about
           building approachable, innovative and user-first experiences to join
           our small but growing Engineering team. You will be responsible for
@@ -22,10 +33,18 @@ function JobDetailsMainContent() {
 
         {/* role requirement */}
         <section className="space-y-6">
-          <h3 className="text-[19px] text-text-heading font-bold">
+          <h3
+            className={`text-[19px] ${
+              isDark ? "text-white" : "text-text-heading"
+            }  font-bold`}
+          >
             Requirements
           </h3>
-          <p className="text-grey-medium leading-normal">
+          <p
+            className={`leading-normal ${
+              isDark ? "text-grey-light" : "text-grey-medium"
+            } `}
+          >
             The ideal candidate is as passionate about solving challenges
             through technology. They are well-versed in building proof of
             concepts from scratch and taking these POCs to production and scale.
@@ -35,27 +54,24 @@ function JobDetailsMainContent() {
           </p>
 
           <ul className="space-y-1">
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
+            <JobTodoList />
           </ul>
         </section>
 
         {/* role to do */}
         <section className="space-y-6">
-          <h3 className="text-[19px] text-text-heading font-bold">
+          <h3
+            className={`text-[19px] ${
+              isDark ? "text-white" : "text-text-heading"
+            }  font-bold`}
+          >
             What you will do
           </h3>
-          <p className="text-grey-medium leading-normal">
+          <p
+            className={`leading-normal ${
+              isDark ? "text-grey-light" : "text-grey-medium"
+            } `}
+          >
             The ideal candidate is as passionate about solving challenges
             through technology. They are well-versed in building proof of
             concepts from scratch and taking these POCs to production and scale.
@@ -65,18 +81,7 @@ function JobDetailsMainContent() {
           </p>
 
           <ul className="space-y-1">
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
-            <li className="text-grey-medium flex items-center gap-8">
-              <RxDotFilled className="text-xs text-grey-medium" />
-              <span>Ability to debug complex systems.</span>
-            </li>
+            <JobTodoList />
           </ul>
         </section>
       </div>

@@ -2,29 +2,37 @@
 import { RxDotFilled } from "react-icons/rx";
 
 import CompanyLogo from "./CompanyLogo";
+import { useContext } from "react";
+import AppContext from "../AppContext";
 
-function JobRoleCard({
-  timePosted = "5h ago",
-  duration = "Full Time",
-  role = "Senior Software Engineer",
-  company = "Scoot",
-  location = "United Kingdom",
-}) {
+function JobRoleCard({ jobRole }) {
+  const { isDark } = useContext(AppContext);
+  console.log(`bg-[${jobRole?.logoBackground}]`);
   return (
-    <div className=" bg-white px-8 py-8 rounded-lg shadow-xl shadow-gray-300 ">
-      <CompanyLogo>
-        <img src="/src/assets/logos/scoot.svg" alt="my image" />
+    <div
+      className={` px-8 py-8 rounded-lg shadow-xl transition-all duration-1000 ${
+        isDark ? "bg-gray-800 shadow-gray-900" : "bg-white shadow-gray-300"
+      } `}
+    >
+      <CompanyLogo bgColor={`bg-[]`}>
+        <img src={`/src/assets/${jobRole.logo.slice(2)}`} alt="my image" />
       </CompanyLogo>
 
       <div className="mt-6">
         <p className="flex gap-2 items-center text-gray-400">
-          <span>{timePosted}</span>
+          <span>{jobRole?.postedAt}</span>
           <RxDotFilled className="text-xs" />
-          <span>{duration}</span>
+          <span>{jobRole?.contract}</span>
         </p>
-        <p className="text-xl font-bold mt-3 text-text-heading">{role}</p>
-        <p className="text-gray-400 mt-3">{company}</p>
-        <p className="mt-8 text-violet">{location}</p>
+        <p
+          className={`${
+            isDark ? "text-white" : "text-text-heading"
+          } text-xl font-bold mt-3 `}
+        >
+          {jobRole?.position}
+        </p>
+        <p className="text-gray-400 mt-3">{jobRole?.company}</p>
+        <p className="mt-8 text-violet">{jobRole?.location}</p>
       </div>
     </div>
   );
