@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import Button from "../Button";
 import AppContext from "../../AppContext";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 function JobDetailsFooter({
   companyName = "Scoot",
   location = "United Kingdom",
+  role,
 }) {
   const { isDark } = useContext(AppContext);
   return (
@@ -28,7 +30,9 @@ function JobDetailsFooter({
           </p>
         </section>
 
-        <Button textColor="font-semibold text-white">Apply now</Button>
+        <Link to={`/jobapplication/${companyName}?position=${role}`}>
+          <Button textColor="font-semibold text-white">Apply now</Button>
+        </Link>
       </div>
     </div>
   );

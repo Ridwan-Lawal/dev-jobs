@@ -2,14 +2,10 @@ import { RxDotFilled } from "react-icons/rx";
 import Button from "../Button";
 import { useContext } from "react";
 import AppContext from "../../AppContext";
+import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-function JobDetailsMainContentHeader({
-  timePosted = "5h ago",
-  duration = "Full Time",
-  role = "Senior Software Engineer",
-  location = "United Kingdom",
-}) {
+function JobDetailsMainContentHeader({ jobRoleDetails }) {
   const { isDark } = useContext(AppContext);
 
   return (
@@ -17,23 +13,27 @@ function JobDetailsMainContentHeader({
       {/* role details */}
       <section className="space-y-2">
         <p className="flex gap-2 items-center text-gray-400">
-          <span>{timePosted}</span>
+          <span>{jobRoleDetails?.postedAt}</span>
           <RxDotFilled className="text-xs" />
-          <span>{duration}</span>
+          <span>{jobRoleDetails?.contract}</span>
         </p>
         <p
           className={`text-xl font-bold  ${
             isDark ? "text-white" : "text-text-heading"
           } `}
         >
-          {role}
+          {jobRoleDetails?.position}
         </p>
-        <p className="text-violet font-bold">{location}</p>
+        <p className="text-violet font-bold">{jobRoleDetails?.location}</p>
       </section>
 
       {/*Apply button */}
-      <section className="w-[40%] flex justify-end">
-        <Button textColor="text-white font-bold">Apply now</Button>
+      <section className="w-[50%] flex justify-end">
+        <Link
+          to={`/jobapplication/${jobRoleDetails?.company}?role=${jobRoleDetails?.position}`}
+        >
+          <Button textColor="text-white font-bold">Apply now</Button>
+        </Link>
       </section>
     </div>
   );

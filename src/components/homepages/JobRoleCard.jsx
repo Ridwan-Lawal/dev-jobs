@@ -14,7 +14,7 @@ function JobRoleCard({ jobRole }) {
         isDark ? "bg-gray-800 shadow-gray-900" : "bg-white shadow-gray-300"
       } `}
     >
-      <CompanyLogo bgColor={`bg-[]`}>
+      <CompanyLogo bgColor={jobRole?.logoBackground}>
         <img src={`/src/assets/${jobRole.logo.slice(2)}`} alt="my image" />
       </CompanyLogo>
 

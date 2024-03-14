@@ -5,7 +5,7 @@ import { useContext } from "react";
 import AppContext from "../../AppContext";
 import JobTodoList from "./JobTodoList";
 
-function JobDetailsMainContent() {
+function JobDetailsMainContent({ jobRoleDetails }) {
   const { isDark } = useContext(AppContext);
   return (
     <div
@@ -13,7 +13,7 @@ function JobDetailsMainContent() {
         isDark ? "bg-gray-800 shadow-gray-900" : "shadow-blue-50 bg-white"
       } shadow-md  pb-14 pt-12 mt-10 rounded-lg px-9 transition-all duration-1000`}
     >
-      <JobDetailsMainContentHeader />
+      <JobDetailsMainContentHeader jobRoleDetails={jobRoleDetails} />
 
       <div className="mt-11 space-y-10">
         {/* role details */}
@@ -22,13 +22,7 @@ function JobDetailsMainContent() {
             isDark ? "text-grey-light" : "text-grey-medium"
           } `}
         >
-          Scoot is looking for a Senior Software Engineer passionate about
-          building approachable, innovative and user-first experiences to join
-          our small but growing Engineering team. You will be responsible for
-          building and maintaining front end functionality across all of Scoot’s
-          applications, fostering a growing team of software engineers, and
-          helping drive and maintain best software patterns and practices in our
-          codebase.
+          {jobRoleDetails?.description}
         </p>
 
         {/* role requirement */}
@@ -45,16 +39,13 @@ function JobDetailsMainContent() {
               isDark ? "text-grey-light" : "text-grey-medium"
             } `}
           >
-            The ideal candidate is as passionate about solving challenges
-            through technology. They are well-versed in building proof of
-            concepts from scratch and taking these POCs to production and scale.
-            The right fit will have the engineering experience to build and
-            iterate quickly and is comfortable working with product and design
-            to set the technical strategy and roadmap.
+            {jobRoleDetails?.requirements?.content}
           </p>
 
-          <ul className="space-y-1">
-            <JobTodoList />
+          <ul className="space-y-2">
+            {jobRoleDetails?.requirements?.items.map((item) => (
+              <JobTodoList key={item} todo={item} />
+            ))}
           </ul>
         </section>
 
@@ -72,16 +63,13 @@ function JobDetailsMainContent() {
               isDark ? "text-grey-light" : "text-grey-medium"
             } `}
           >
-            The ideal candidate is as passionate about solving challenges
-            through technology. They are well-versed in building proof of
-            concepts from scratch and taking these POCs to production and scale.
-            The right fit will have the engineering experience to build and
-            iterate quickly and is comfortable working with product and design
-            to set the technical strategy and roadmap.
+            {jobRoleDetails?.role?.content}
           </p>
 
-          <ul className="space-y-1">
-            <JobTodoList />
+          <ul className="space-y-2">
+            {jobRoleDetails?.role?.items?.map((item) => (
+              <JobTodoList key={item} todo={item} />
+            ))}
           </ul>
         </section>
       </div>

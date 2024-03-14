@@ -37,20 +37,26 @@ function App() {
   const { isDark, jobRolesData } = state;
 
   useEffect(function () {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function getJobRoles() {
       try {
         dispatch({ type: "clearErr" });
-        const res = await fetch(`http://localhost:4000/jobRoles`);
+        const res = await fetch(`http://localhost:4000/jobRoles`, { signal });
         if (!res.ok) throw new Error("Something went wrong fetching data!");
 
         const data = await res.json();
         dispatch({ type: "dataReady", payload: data });
       } catch (err) {
+        if (err.name === "AbortError") return;
         dispatch({ type: "dataFailed", payload: err.message });
         console.error(err.message);
       }
     }
     getJobRoles();
+
+    return () => abortController.abort();
   }, []);
 
   return (
