@@ -12,7 +12,7 @@ function JobRoleCard({ jobRole }) {
     <div
       className={` px-8 py-8 rounded-lg shadow-xl transition-all duration-1000 ${
         isDark ? "bg-gray-800 shadow-gray-900" : "bg-white shadow-gray-300"
-      } `}
+      } h-[250px] `}
     >
       <CompanyLogo bgColor={jobRole?.logoBackground}>
         <img src={`/src/assets/${jobRole.logo.slice(2)}`} alt="my image" />

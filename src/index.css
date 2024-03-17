@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 .radio {
-  @apply appearance-none p-2  border rounded-full cursor-pointer transition-opacity duration-500;
+  @apply appearance-none p-2   rounded-full cursor-pointer transition-opacity duration-500;
 }
