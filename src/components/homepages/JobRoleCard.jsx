@@ -7,7 +7,7 @@ import AppContext from "../AppContext";
 
 function JobRoleCard({ jobRole }) {
   const { isDark } = useContext(AppContext);
-  console.log(`bg-[${jobRole?.logoBackground}]`);
+
   return (
     <div
       className={` px-8 py-8 rounded-lg shadow-xl transition-all duration-1000 ${

@@ -6,11 +6,19 @@ import PageNotFound from "../src/pages/PageNotFound.jsx";
 import { useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext.jsx";
 
+/* make the nav fixed
+    ALSO, handle the search functionality
+*/
+
 const intialValue = {
   isDark: true,
   status: "loading",
   errMessage: "",
   jobRolesData: [],
+  fullTimeFilter: false,
+  filterByTitle: "",
+  filterByLocation: "",
+  isFilterByLocationMobileOpen: false,
 };
 
 function reducer(state, action) {
@@ -27,6 +35,21 @@ function reducer(state, action) {
     case "clearErr":
       return { ...state, status: "loading", errMessage: "" };
 
+    case "fullTimeFilterClick":
+      return { ...state, fullTimeFilter: !state.fullTimeFilter };
+
+    case "filterByTitleChange":
+      return { ...state, filterByTitle: action.payload };
+
+    case "filterByLocationChange":
+      return { ...state, filterByLocation: action.payload };
+
+    case "filterByLocationMobileView":
+      return {
+        ...state,
+        isFilterByLocationMobileOpen: !state.isFilterByLocationMobileOpen,
+      };
+
     default:
       throw new Error("Unkown error");
   }
@@ -34,7 +57,14 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, intialValue);
-  const { isDark, jobRolesData } = state;
+  const {
+    isDark,
+    jobRolesData,
+    fullTimeFilter,
+    filterByTitle,
+    filterByLocation,
+    isFilterByLocationMobileOpen,
+  } = state;
 
   useEffect(function () {
     const abortController = new AbortController();
@@ -60,7 +90,17 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ isDark, dispatch, jobRolesData }}>
+    <AppContext.Provider
+      value={{
+        isDark,
+        dispatch,
+        jobRolesData,
+        fullTimeFilter,
+        filterByTitle,
+        filterByLocation,
+        isFilterByLocationMobileOpen,
+      }}
+    >
       <div
         className={`font-kumbh transition-colors duration-1000 min-h-screen ${
           isDark ? "bg-gray-900" : "bg-background-body"

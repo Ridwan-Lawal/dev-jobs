@@ -1,13 +1,25 @@
 import { FaCheck, FaLocationDot } from "react-icons/fa6";
-import Button from "../Button";
 import { useContext } from "react";
+import { RxCross1 } from "react-icons/rx";
+
+import Button from "../Button";
 import AppContext from "../../AppContext";
 
 function FilterByLocationMobile() {
-  const { isDark } = useContext(AppContext);
+  const {
+    isDark,
+    dispatch,
+    fullTimeFilter,
+    filterByLocation,
+    isFilterByLocationMobileOpen,
+  } = useContext(AppContext);
 
   return (
-    <div className="fixed w-screen left-0 bg-black h-screen top-0 flex items-center justify-center bg-opacity-50 px-8">
+    <div
+      className={` fixed w-screen left-0 bg-black h-screen md:hidden ${
+        isFilterByLocationMobileOpen ? "opacity-100 z-50" : "opacity-0 -z-50"
+      } transition-opacity duration-400 top-0 flex flex-col items-center justify-center bg-opacity-50 px-8 gap-7`}
+    >
       <div
         className={`${
           isDark ? "bg-grey-ultradark" : "bg-white"
@@ -18,6 +30,13 @@ function FilterByLocationMobile() {
           <FaLocationDot className="text-2xl md:text-2xl text-violet" />
           <input
             type="text"
+            value={filterByLocation}
+            onChange={(e) =>
+              dispatch({
+                type: "filterByLocationChange",
+                payload: e.target.value,
+              })
+            }
             placeholder="Filter by location..."
             className={`w-full ${
               isDark ? "text-white" : "text-text-header"
@@ -31,8 +50,19 @@ function FilterByLocationMobile() {
             isDark && "border-gray-600"
           } border-t py-4 mb-2`}
         >
-          <p className={` bg-violet p-0.5 rounded-sm`}>
-            <FaCheck className="text-xl p-[2px] font-semibold text-white" />
+          <p
+            onClick={() => dispatch({ type: "fullTimeFilterClick" })}
+            className={`${
+              fullTimeFilter
+                ? "p-0.5 bg-violet"
+                : isDark
+                ? "p-3 bg-gray-700"
+                : "p-3 bg-gray-200"
+            } cursor-pointer rounded-sm`}
+          >
+            {fullTimeFilter && (
+              <FaCheck className="text-xl p-[2px] font-semibold text-white" />
+            )}
           </p>
           <p
             className={`font-semibold  ${
@@ -46,6 +76,13 @@ function FilterByLocationMobile() {
         {/* search button */}
         <Button width="w-full">Search</Button>
       </div>
+
+      <section
+        onClick={() => dispatch({ type: "filterByLocationMobileView" })}
+        className="mt-8 cursor-pointer p-2 rounded-full shadow-xs border-[2px] shadow-white"
+      >
+        <RxCross1 className="text-white text-xl" />
+      </section>
     </div>
   );
 }
