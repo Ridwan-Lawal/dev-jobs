@@ -59,7 +59,6 @@ function Homepage() {
   useEffect(function () {
     const navElSelect = navEl.current;
     const navElCoords = navElSelect.getBoundingClientRect();
-    console.log(navElCoords);
 
     function handleNavFixed() {
       if (window.scrollY > navElCoords.top) setNavIsFixed(true);

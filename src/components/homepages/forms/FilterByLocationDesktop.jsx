@@ -6,8 +6,6 @@ function FilterByLocationDesktop() {
   const { isDark, fullTimeFilter, dispatch, filterByLocation } =
     useContext(AppContext);
 
-  console.log(fullTimeFilter);
-
   return (
     <>
       <div
