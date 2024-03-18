@@ -3,7 +3,7 @@ import Homepage from "../src/pages/Homepage.jsx";
 import JobDetails from "../src/pages/JobDetails.jsx";
 import JobApplication from "../src/pages/JobApplication.jsx";
 import PageNotFound from "../src/pages/PageNotFound.jsx";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import AppContext from "./components/AppContext.jsx";
 import jobData from "../public/data.json";
 
@@ -13,7 +13,7 @@ make the nav fixed
 */
 
 const intialValue = {
-  isDark: true,
+  isDark: JSON.parse(localStorage.getItem("jobThemes")),
   status: "loading",
   errMessage: "",
   jobRolesData: jobData,
@@ -67,6 +67,15 @@ function App() {
     filterByLocation,
     isFilterByLocationMobileOpen,
   } = state;
+
+  // Local storage for theme
+
+  useEffect(
+    function () {
+      localStorage.setItem("jobThemes", JSON.stringify(isDark));
+    },
+    [isDark]
+  );
 
   return (
     <AppContext.Provider
