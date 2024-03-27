@@ -1,9 +1,8 @@
 import { FaCheck, FaLocationDot } from "react-icons/fa6";
-import { useContext } from "react";
+import { useJobs } from "../../../contexts/AppContext";
 import { RxCross1 } from "react-icons/rx";
 
 import Button from "../Button";
-import AppContext from "../../AppContext";
 
 function FilterByLocationMobile() {
   const {
@@ -12,7 +11,7 @@ function FilterByLocationMobile() {
     fullTimeFilter,
     filterByLocation,
     isFilterByLocationMobileOpen,
-  } = useContext(AppContext);
+  } = useJobs();
 
   return (
     <div

@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import { FaCheck, FaLocationDot } from "react-icons/fa6";
-import AppContext from "../../AppContext";
+import { useJobs } from "../../../contexts/AppContext";
 
 function FilterByLocationDesktop() {
-  const { isDark, fullTimeFilter, dispatch, filterByLocation } =
-    useContext(AppContext);
+  const { isDark, fullTimeFilter, dispatch, filterByLocation } = useJobs();
 
   return (
     <>

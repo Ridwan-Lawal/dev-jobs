@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+
 import { RxDotFilled } from "react-icons/rx";
-import AppContext from "../../AppContext";
+import { useJobs } from "../../../contexts/AppContext";
 
 function JobTodoList({ todo = "Ability to debug complex systems." }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
   return (
     <li
       className={` flex  gap-8 ${

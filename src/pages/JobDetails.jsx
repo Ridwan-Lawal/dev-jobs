@@ -1,16 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext } from "react";
 
 import Banner from "../components/homepages/Banner";
 import JobDetailsFooter from "../components/homepages/jobdetails/JobDetailsFooter";
 import JobDetailsHeader from "../components/homepages/jobdetails/JobDetailsHeader";
 import JobDetailsMainContent from "../components/homepages/jobdetails/JobDetailsMainContent";
-import AppContext from "../components/AppContext";
+import { useJobs } from "../contexts/AppContext";
 
 function JobDetails() {
   const navigate = useNavigate();
 
-  const { jobRolesData } = useContext(AppContext);
+  const { jobRolesData } = useJobs();
   const { jobId } = useParams();
 
   const jobRoleDetails = jobRolesData

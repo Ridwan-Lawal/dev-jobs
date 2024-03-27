@@ -1,11 +1,11 @@
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import AppContext from "../components/AppContext";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
+
+import { useJobs } from "../contexts/AppContext";
 
 function JobApplication() {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
 
   const navigate = useNavigate();
 

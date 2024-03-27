@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-
-import { useContext } from "react";
-import Button from "../Button";
-import AppContext from "../../AppContext";
+import { useJobs } from "../../../contexts/AppContext";
 import { Link } from "react-router-dom";
 
+import Button from "../Button";
+
 function JobDetailsHeader({ jobRoleDetails }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
 
   const style = {
     backgroundColor: jobRoleDetails?.logoBackground,

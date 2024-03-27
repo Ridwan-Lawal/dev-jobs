@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { IoMoon, IoSunnySharp } from "react-icons/io5";
-import AppContext from "../AppContext";
-import { useContext } from "react";
+import { useJobs } from "../../contexts/AppContext";
 
 function Banner({ navIsFixed, onClick }) {
-  const { isDark, dispatch } = useContext(AppContext);
+  const { isDark, dispatch } = useJobs();
 
   return (
     <header className="bg-header-pattern-mobile tablet:bg-header-pattern-tablet laptop:bg-header-pattern-desktop bg-no-repeat bg-cover tablet:h-[180px]   h-[150px]  ">

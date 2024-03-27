@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import AppContext from "./AppContext";
+import { useJobs } from "../contexts/AppContext";
 
 function IconFilter() {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
   return (
     <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
       <path

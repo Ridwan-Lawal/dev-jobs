@@ -1,12 +1,12 @@
 import { RxDotFilled } from "react-icons/rx";
-import Button from "../Button";
-import { useContext } from "react";
-import AppContext from "../../AppContext";
 import { Link } from "react-router-dom";
+import { useJobs } from "../../../contexts/AppContext";
+
+import Button from "../Button";
 
 /* eslint-disable react/prop-types */
 function JobDetailsMainContentHeader({ jobRoleDetails }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
 
   return (
     <div className="flex items-center justify-between gap-2 ">

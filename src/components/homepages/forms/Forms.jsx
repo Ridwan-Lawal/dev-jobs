@@ -1,14 +1,13 @@
-import { useContext } from "react";
+import { useJobs } from "../../../contexts/AppContext";
 import { IoSearch } from "react-icons/io5";
 
 import Button from "../Button";
 import FilterByLocationDesktop from "./FilterByLocationDesktop";
-import AppContext from "../../AppContext";
 import IconFilter from "../../IconFilter";
 import FilterByLocationMobile from "./FilterByLocationMobile";
 
 function Forms() {
-  const { isDark, filterByTitle, dispatch } = useContext(AppContext);
+  const { isDark, filterByTitle, dispatch } = useJobs();
 
   return (
     <div className="px-8">

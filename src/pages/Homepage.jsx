@@ -1,15 +1,15 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useJobs } from "../contexts/AppContext";
 
 import Banner from "/src/components/homepages/Banner.jsx";
 import Forms from "/src/components/homepages/forms/Forms.jsx";
 import JobRoleCard from "/src/components/homepages/JobRoleCard.jsx";
-import AppContext from "../components/AppContext";
-import { Link } from "react-router-dom";
 
 function Homepage() {
   const [navIsFixed, setNavIsFixed] = useState(false);
   const { jobRolesData, filterByTitle, filterByLocation, fullTimeFilter } =
-    useContext(AppContext);
+    useJobs();
   const navEl = useRef(null);
 
   /* 

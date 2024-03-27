@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import Button from "../Button";
-import AppContext from "../../AppContext";
 import { Link } from "react-router-dom";
+
+import Button from "../Button";
+import { useJobs } from "../../../contexts/AppContext";
 
 /* eslint-disable react/prop-types */
 function JobDetailsFooter({
@@ -9,7 +9,7 @@ function JobDetailsFooter({
   location = "United Kingdom",
   role,
 }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
   return (
     <div
       className={`transition-all duration-1000 ${

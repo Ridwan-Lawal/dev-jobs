@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import { RxDotFilled } from "react-icons/rx";
+import { useJobs } from "../../contexts/AppContext";
 
 import CompanyLogo from "./CompanyLogo";
-import { useContext } from "react";
-import AppContext from "../AppContext";
 
 function JobRoleCard({ jobRole }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
 
   return (
     <div

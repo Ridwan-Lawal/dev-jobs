@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { useJobs } from "../../../contexts/AppContext";
+
 import JobDetailsMainContentHeader from "./JobDetailsMainContentHeader";
-import { useContext } from "react";
-import AppContext from "../../AppContext";
 import JobTodoList from "./JobTodoList";
 
 function JobDetailsMainContent({ jobRoleDetails }) {
-  const { isDark } = useContext(AppContext);
+  const { isDark } = useJobs();
   return (
     <div
       className={`${
