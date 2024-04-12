@@ -1,13 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { useEffect, useReducer, createContext, useContext } from "react";
+import {
+  useEffect,
+  useReducer,
+  createContext,
+  useContext,
+  useMemo,
+} from "react";
 
 import jobData from "../data.json";
 
 const AppContext = createContext();
 
 const intialValue = {
-  isDark: JSON.parse(localStorage.getItem("jobThemes")),
+  isDark: false,
   status: "loading",
   errMessage: "",
   jobRolesData: jobData,
@@ -46,6 +52,9 @@ function reducer(state, action) {
         isFilterByLocationMobileOpen: !state.isFilterByLocationMobileOpen,
       };
 
+    case "jobState/fromStorage":
+      return action.payload;
+
     default:
       throw new Error("Unkown error");
   }
@@ -62,30 +71,45 @@ function AppProvider({ children }) {
     isFilterByLocationMobileOpen,
   } = state;
 
-  // Local storage for theme
+  //effect for storing state in the  Local storage;
 
   useEffect(
     function () {
-      localStorage.setItem("jobThemes", JSON.stringify(isDark));
+      if (state === intialValue) return;
+      localStorage.setItem("jobState", JSON.stringify(state));
     },
-    [isDark]
+    [state]
   );
 
-  return (
-    <AppContext.Provider
-      value={{
-        isDark,
-        dispatch,
-        jobRolesData,
-        fullTimeFilter,
-        filterByTitle,
-        filterByLocation,
-        isFilterByLocationMobileOpen,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+  // effect for getting state from the local storage
+  useEffect(function () {
+    const storedState = JSON.parse(localStorage.getItem("jobState"));
+    if (!storedState) return;
+
+    dispatch({ type: "jobState/fromStorage", payload: storedState });
+  }, []);
+
+  const values = useMemo(() => {
+    return {
+      isDark,
+      dispatch,
+      jobRolesData,
+      fullTimeFilter,
+      filterByTitle,
+      filterByLocation,
+      isFilterByLocationMobileOpen,
+    };
+  }, [
+    isDark,
+    dispatch,
+    jobRolesData,
+    fullTimeFilter,
+    filterByTitle,
+    filterByLocation,
+    isFilterByLocationMobileOpen,
+  ]);
+
+  return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 }
 
 function useJobs() {

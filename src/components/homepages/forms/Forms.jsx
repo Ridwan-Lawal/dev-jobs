@@ -13,6 +13,7 @@ function Forms() {
     <div className="px-8">
       <FilterByLocationMobile />
       <form
+        onSubmit={(e) => e.preventDefault()}
         className={`shadow-lg transition-all duration-1000 rounded-lg  pr-4 pl-2 md:px-3  flex justify-between ${
           isDark ? "bg-gray-800 shadow-gray-900" : "bg-white shadow-gray-200"
         }  gap-6 items-center -mt-10   max-w-6xl mx-auto`}

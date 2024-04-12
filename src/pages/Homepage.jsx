@@ -5,6 +5,7 @@ import { useJobs } from "../contexts/AppContext";
 import Banner from "/src/components/homepages/Banner.jsx";
 import Forms from "/src/components/homepages/forms/Forms.jsx";
 import JobRoleCard from "/src/components/homepages/JobRoleCard.jsx";
+import Button from "../components/homepages/Button";
 
 function Homepage() {
   const [navIsFixed, setNavIsFixed] = useState(false);
@@ -61,6 +62,7 @@ function Homepage() {
     const navElCoords = navElSelect.getBoundingClientRect();
 
     function handleNavFixed() {
+     
       if (window.scrollY > navElCoords.top) setNavIsFixed(true);
       else setNavIsFixed(false);
     }
@@ -88,6 +90,10 @@ function Homepage() {
           </Link>
         ))}
       </div>
+
+      <section className="flex justify-center mt-20">
+        <Button>Load More</Button>
+      </section>
     </div>
   );
 }

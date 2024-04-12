@@ -11,8 +11,6 @@ function JobDetailsHeader({ jobRoleDetails }) {
     backgroundColor: jobRoleDetails?.logoBackground,
   };
 
-  console.log(jobRoleDetails);
-
   return (
     <div
       className={`flex flex-col  tablet:flex-row transition-all duration-1000 rounded-md shadow-lg  -mt-8 tablet:-mt-16  tablet:overflow-hidden  tablet:pr-8  gap-5 items-center tablet:items-stretch ${
