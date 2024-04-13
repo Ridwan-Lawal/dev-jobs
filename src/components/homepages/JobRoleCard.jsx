@@ -16,7 +16,7 @@ function JobRoleCard({ jobRole }) {
       } h-[250px] `}
     >
       <CompanyLogo bgColor={jobRole?.logoBackground}>
-        <img src={`/public/${jobRole.logo.slice(2)}`} alt="my image" />
+        <img src={`/${jobRole.logo.slice(2)}`} alt="my image" />
       </CompanyLogo>
 
       <div className="mt-6">
