@@ -22,7 +22,7 @@ function JobDetailsHeader({ jobRoleDetails }) {
         className={`h-[50px] w-[50px] -mt-6 py-[19px] px-2 tablet:mt-0 rounded-xl  tablet:rounded-none flex items-center tablet:w-[25%] justify-center `}
       >
         <img
-          src={`/src/assets/logos/${jobRoleDetails?.company.toLowerCase()}.svg`}
+          src={`/${jobRoleDetails?.company.toLowerCase()}.svg`}
           alt=""
           className="tablet:w-12"
         />

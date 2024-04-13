@@ -16,12 +16,12 @@ function JobDetailsFooter({
         isDark ? "bg-gray-800" : "bg-white"
       }`}
     >
-      <div className=" flex flex-row items-center justify-between mt-20  py-6 px-8 max-w-3xl mx-auto">
+      <div className=" flex flex-row items-center justify-between mt-20 gap-3  py-6 px-8 max-w-3xl mx-auto">
         <section className="space-y-1">
           <h2
             className={`${
               isDark ? "text-white" : " text-text-heading"
-            } text-2xl  font-bold `}
+            } text-lg sm:text-2xl  font-bold `}
           >
             {companyName}
           </h2>
