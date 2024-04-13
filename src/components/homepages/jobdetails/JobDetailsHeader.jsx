@@ -11,6 +11,8 @@ function JobDetailsHeader({ jobRoleDetails }) {
     backgroundColor: jobRoleDetails?.logoBackground,
   };
 
+  console.log(jobRoleDetails?.company.toLowerCase());
+
   return (
     <div
       className={`flex flex-col  tablet:flex-row transition-all duration-1000 rounded-md shadow-lg  -mt-8 tablet:-mt-16  tablet:overflow-hidden  tablet:pr-8  gap-5 items-center tablet:items-stretch ${
@@ -22,7 +24,7 @@ function JobDetailsHeader({ jobRoleDetails }) {
         className={`h-[50px] w-[50px] -mt-6 py-[19px] px-2 tablet:mt-0 rounded-xl  tablet:rounded-none flex items-center tablet:w-[25%] justify-center `}
       >
         <img
-          src={`/${jobRoleDetails?.company.toLowerCase()}.svg`}
+          src={`/logos/${jobRoleDetails?.company.toLowerCase()}.svg`}
           alt=""
           className="tablet:w-12"
         />

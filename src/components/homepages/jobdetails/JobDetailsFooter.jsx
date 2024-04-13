@@ -21,7 +21,7 @@ function JobDetailsFooter({
           <h2
             className={`${
               isDark ? "text-white" : " text-text-heading"
-            } text-lg sm:text-2xl  font-bold `}
+            } text-xl sm:text-2xl  font-bold `}
           >
             {companyName}
           </h2>
