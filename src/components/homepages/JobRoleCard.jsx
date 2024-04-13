@@ -7,6 +7,8 @@ import CompanyLogo from "./CompanyLogo";
 function JobRoleCard({ jobRole }) {
   const { isDark } = useJobs();
 
+  console.log(jobRole.logo);
+
   return (
     <div
       className={` px-8 py-8 rounded-lg shadow-xl transition-all duration-1000 ${
@@ -14,7 +16,7 @@ function JobRoleCard({ jobRole }) {
       } h-[250px] `}
     >
       <CompanyLogo bgColor={jobRole?.logoBackground}>
-        <img src={`/src/assets/${jobRole.logo.slice(2)}`} alt="my image" />
+        <img src={`/public/${jobRole.logo.slice(2)}`} alt="my image" />
       </CompanyLogo>
 
       <div className="mt-6">
